@@ -8,6 +8,7 @@ class Transaction(models.Model):
     user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=100, db_index=True)
 
