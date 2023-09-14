@@ -20,3 +20,13 @@ class TransactionAPIList(generics.ListCreateAPIView):
         # Фильтруем транзакции по текущему пользователю
         return Transaction.objects.filter(user=self.request.user)
 
+
+class TransactionAPIUpdate(generics.UpdateAPIView):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
+    permission_classes = (IsAdminUser,)
+
+class TransactionAPIDestroy(generics.RetrieveDestroyAPIView):
+    queryset = Transaction.objects.all()
+    serializer_class = TransactionSerializer
+    permission_classes = (IsAdminUser, )

@@ -17,12 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include, re_path
 
-from transactaccount.views import TransactionAPIList
+from transactaccount.views import TransactionAPIList, TransactionAPIUpdate, TransactionAPIDestroy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/trnacc-auth/', include('rest_framework.urls')),
     path('api/v1/transaction/', TransactionAPIList.as_view()),
+    path('api/v1/transaction/<int:pk>/', TransactionAPIUpdate.as_view()),
+    path('api/v1/transactiondelete/<int:pk>/', TransactionAPIDestroy.as_view()),
     path('api/v1/auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
 ]
